@@ -1,11 +1,21 @@
 #include "mainwindow.h"
 #include "mapview.h"
+#include "toolview.h"
 #include <QLabel>
 #include <QColor>
+
+#include <QFileDialog>
+#include <QGridLayout>
+#include <QSplitter>
+#include <QPushButton>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
+
+    this->setCentralWidget(new QWidget(this));
+    QGridLayout *centralLayout = new QGridLayout(centralWidget());
+    QSplitter *splitter = new QSplitter(this);
 
     QGraphicsScene *scene = new QGraphicsScene(this);
     QGraphicsPixmapItem *mapItem = new QGraphicsPixmapItem(0,scene);
@@ -13,28 +23,25 @@ MainWindow::MainWindow(QWidget *parent) :
     mapImage.load("plan.jpg");
     mapItem->setPixmap(mapImage);
 
-
-    QGraphicsEllipseItem *markItem2 = new QGraphicsEllipseItem(100, 50, 18, 18);
-    markItem2->setBrush(QColor(0,52,102));
-    markItem2->setPen(Qt::NoPen);
-    scene->addItem(markItem2);
-
-    QGraphicsEllipseItem *markItem3 = new QGraphicsEllipseItem(96, 46, 26, 26);
-    //markItem3->setBrush(Qt::blue);
-    QPen p = markItem3->pen();
-    p.setColor(QColor(0,52,102));
-    p.setWidth(3);
-    markItem3->setPen(p);
-    scene->addItem(markItem3);
-
-
-    QGraphicsView *view = new MapView();
+    MapView *view = new MapView();
     view->setScene(scene);
-    view->setParent(this);
     view->setMinimumWidth(mapImage.width()+5);
     view->setMinimumHeight(mapImage.height()+5);
     view->setMaximumWidth(mapImage.width()+5);
     view->setMaximumHeight(mapImage.height()+5);
+    splitter->addWidget(view);
+
+    ToolView *tv = new ToolView();
+    tv->setParent(this);
+    splitter->addWidget(tv);
+
+    view->setParent(splitter);
+
+
+    QObject::connect(tv->correct_xy, SIGNAL(clicked()) , view, SLOT(MapView::correctmode()));
+
+    centralLayout->addWidget(splitter, 0, 0, 1, -1);
+
     this->setMinimumHeight(view->height());
     this->setMinimumWidth(view->width());
 }

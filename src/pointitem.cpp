@@ -1,7 +1,7 @@
 #include "pointitem.h"
 
 void PointItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
-    //qDebug() << "plop ! " << this->rect().x() << " : " << this->rect().y();
+    qDebug() << "plop ! " << this->rect().x() << " : " << this->rect().y();
     if(this->parent->link){
         this->parent->scene()->removeItem(this->parent->lastLine);
         this->parent->scene()->removeItem(this->parent->lastMark);

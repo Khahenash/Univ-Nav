@@ -16,11 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     mapview.cpp \
     pointitem.cpp \
-    lineitem.cpp
+    lineitem.cpp \
+    toolview.cpp
 
 HEADERS  += mainwindow.h \
     mapview.h \
     pointitem.h \
-    lineitem.h
+    lineitem.h \
+    toolview.h
 
-FORMS    +=
+FORMS    += \
+    ../mainwindow.ui

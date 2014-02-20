@@ -6,8 +6,36 @@ MapView::MapView(){
     setMouseTracking(true);
 }
 
+
 void MapView::mousePressEvent(QMouseEvent *event){
     QGraphicsView::mousePressEvent(event);
+
+    if(echelle1){
+        echelle1 = false;
+        echelle2 = true;
+
+        QGraphicsEllipseItem *p = new QGraphicsEllipseItem();
+        p->setRect(mapFromGlobal(QCursor::pos()).rx()-5, mapFromGlobal(QCursor::pos()).ry()-5, 10, 10);
+        p->setBrush(QColor(0,52,102));
+        p->setPen(Qt::NoPen);
+        p->setZValue(1);
+        scene()->addItem(p);
+
+        lastX = mapFromGlobal(QCursor::pos()).rx()-5;
+        lastY = mapFromGlobal(QCursor::pos()).ry()-5;
+    }
+    else if(echelle2){
+        echelle2 = false;
+
+        QGraphicsEllipseItem *p = new QGraphicsEllipseItem();
+        p->setRect(mapFromGlobal(QCursor::pos()).rx()-5, mapFromGlobal(QCursor::pos()).ry()-5, 10, 10);
+        p->setBrush(QColor(0,52,102));
+        p->setPen(Qt::NoPen);
+        p->setZValue(1);
+        scene()->addItem(p);
+
+        echellel = sqrt((lastX-mapFromGlobal(QCursor::pos()).rx()-5)*(lastX-mapFromGlobal(QCursor::pos()).rx()-5) + (lastY-mapFromGlobal(QCursor::pos()).ry()-5)*(lastY-mapFromGlobal(QCursor::pos()).ry()-5));
+    }
 
     if(mark){
         lastX = mapFromGlobal(QCursor::pos()).rx();
@@ -18,14 +46,31 @@ void MapView::mousePressEvent(QMouseEvent *event){
             lastY = correctY;
         }
 
+        if(access){
 
-        PointItem *p = new PointItem(this);
-        p->setRect(lastX-10, lastY-10, 20, 20);
-        p->setBrush(QColor(0,52,102));
-        p->setPen(Qt::NoPen);
-        scene()->addItem(p);
+            QGraphicsEllipseItem *markItem = new QGraphicsEllipseItem(lastX-13, lastY-13, 26, 26);
+            QPen pen = markItem->pen();
+            pen.setColor(QColor(0,52,102));
+            pen.setWidth(3);
+            markItem->setPen(pen);
+            scene()->addItem(markItem);
 
-        this->link = true;
+            PointItem *p = new PointItem(this);
+            p->setRect(lastX-9, lastY-9, 18, 18);
+            p->setBrush(QColor(0,52,102));
+            p->setPen(Qt::NoPen);
+            p->setZValue(1);
+            scene()->addItem(p);
+        }
+        else{
+            PointItem *p = new PointItem(this);
+            p->setRect(lastX-10, lastY-10, 20, 20);
+            p->setBrush(QColor(0,52,102));
+            p->setPen(Qt::NoPen);
+            p->setZValue(1);
+            scene()->addItem(p);
+            this->link = true;
+        }
         lastLine = NULL;
     }
 }
@@ -86,6 +131,7 @@ void MapView::keyPressEvent(QKeyEvent *event){
         case Qt::Key_Escape:
             this->link = false;
             this->mark = false;
+            this->access = false;
             if(lastMark!=NULL){
                 scene()->removeItem(lastMark);
                 lastMark = NULL;
@@ -94,6 +140,12 @@ void MapView::keyPressEvent(QKeyEvent *event){
                 scene()->removeItem(lastLine);
                 lastLine = NULL;
             }
+            this->echelle1 = false;
+            this->echelle2 = false;
+            break;
+        case Qt::Key_F4:
+            this->access = true;
+            this->mark = true;
             break;
         case Qt::Key_F3:
             this->mark = true;
@@ -101,5 +153,42 @@ void MapView::keyPressEvent(QKeyEvent *event){
         case Qt::Key_F2:
             this->correct = !this->correct;
             break;
+        case Qt::Key_F1:
+            this->echelle1 = true;
+            break;
     }
+}
+
+void MapView::accessmode(){
+    this->access = true;
+    this->mark = true;
+}
+
+void MapView::echellemode(){
+    this->echelle1 = true;
+}
+
+void MapView::couloirmode(){
+
+}
+
+void MapView::echapmode(){
+    this->link = false;
+    this->mark = false;
+    this->access = false;
+    if(lastMark!=NULL){
+        scene()->removeItem(lastMark);
+        lastMark = NULL;
+    }
+    if(lastLine!=NULL){
+        scene()->removeItem(lastLine);
+        lastLine = NULL;
+    }
+    this->echelle1 = false;
+    this->echelle2 = false;
+
+}
+
+void MapView::correctmode(){
+    this->correct = !this->correct;
 }
