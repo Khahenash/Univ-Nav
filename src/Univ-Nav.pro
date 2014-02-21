@@ -17,13 +17,23 @@ SOURCES += main.cpp\
     mapview.cpp \
     pointitem.cpp \
     lineitem.cpp \
-    toolview.cpp
+    toolview.cpp \
+    batiment.cpp \
+    etage.cpp \
+    salle.cpp \
+    portesalle.cpp \
+    acces.cpp
 
 HEADERS  += mainwindow.h \
     mapview.h \
     pointitem.h \
     lineitem.h \
-    toolview.h
+    toolview.h \
+    batiment.h \
+    etage.h \
+    salle.h \
+    portesalle.h \
+    acces.h
 
 FORMS    += \
     ../mainwindow.ui

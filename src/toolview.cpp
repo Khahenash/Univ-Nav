@@ -6,7 +6,7 @@ ToolView::ToolView(){
 
     // ECHELLE
     QGroupBox *groupBox = new QGroupBox("Etape 1 : Echelle de la carte");
-    groupBox->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;}");
+    groupBox->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;margin-left:15px;}");
 
     QVBoxLayout *bv1 = new QVBoxLayout(this);
     QHBoxLayout *bh11 = new QHBoxLayout(this);
@@ -31,7 +31,7 @@ ToolView::ToolView(){
 
     // ACCES
     QGroupBox *groupBox2 = new QGroupBox("Etape 2 : Acces du niveau");
-    groupBox2->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;}");
+    groupBox2->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;margin-left:15px;}");
 
     QVBoxLayout *bv2 = new QVBoxLayout(this);
     QHBoxLayout *bh21 = new QHBoxLayout(this);
@@ -61,7 +61,7 @@ ToolView::ToolView(){
 
     // COULOIRS
     QGroupBox *groupBox3 = new QGroupBox("Etape 3 : Creation des couloirs");
-    groupBox3->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;}");
+    groupBox3->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;margin-left:15px;}");
 
     QVBoxLayout *bv3 = new QVBoxLayout(this);
     QHBoxLayout *bh31 = new QHBoxLayout(this);
@@ -74,7 +74,7 @@ ToolView::ToolView(){
 
     // SALLES
     QGroupBox *groupBox4 = new QGroupBox("Etape 4 : Creation des salles");
-    groupBox4->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;}");
+    groupBox4->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;margin-left:15px;}");
 
     QVBoxLayout *bv4 = new QVBoxLayout(this);
     QHBoxLayout *bh41 = new QHBoxLayout(this);
@@ -109,7 +109,7 @@ ToolView::ToolView(){
 
     // options
     QGroupBox *groupBox5 = new QGroupBox;
-    groupBox5->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;}");
+    groupBox5->setStyleSheet ("QGroupBox{border: 2px solid gray;border-radius: 5px;margin-left:15px;}");
 
     QVBoxLayout *bv5 = new QVBoxLayout(this);
     QHBoxLayout *bh51 = new QHBoxLayout(this);

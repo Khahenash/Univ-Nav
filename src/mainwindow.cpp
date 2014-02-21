@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ToolView *tv = new ToolView();
     tv->setParent(this);
     splitter->addWidget(tv);
+    tv->setMaximumWidth(500);
+    this->setStyleSheet("QMainWindow{background-color:white;}");
 
     view->setParent(splitter);
 
