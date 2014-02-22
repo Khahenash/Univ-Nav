@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     view->setParent(splitter);
 
 
-    QObject::connect(tv->correct_xy, SIGNAL(clicked()) , view, SLOT(MapView::correctmode()));
+   connect(tv->correct_xy,SIGNAL(clicked()), view,SLOT(correctmode()));
 
     centralLayout->addWidget(splitter, 0, 0, 1, -1);
 

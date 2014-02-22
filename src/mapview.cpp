@@ -2,8 +2,18 @@
 #include "pointitem.h"
 #include "lineitem.h"
 
-MapView::MapView(){
+MapView::MapView(QWidget * parent){
+    this->setParent(parent);
     setMouseTracking(true);
+    lastX = 0;
+    lastY = 0;
+    link = false;
+    correct = true; // correction d'angle des liaisons
+    mark = false; // ajout d'intersections
+    access = false;
+    echelle1 = false;
+    echelle2 = false;
+    echellel = 0;
 }
 
 

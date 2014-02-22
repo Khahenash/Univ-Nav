@@ -4,19 +4,21 @@
 
 class MapView : public QGraphicsView
 {
+
+    Q_OBJECT
 public:
-    MapView();
-    int lastX = 0;
-    int lastY = 0;
-    bool link = false;
+    MapView(QWidget * parent = 0 );
+    int lastX ;
+    int lastY;
+    bool link;
     int correctX;
     int correctY;
-    bool correct = true; // correction d'angle des liaisons
-    bool mark = false; // ajout d'intersections
-    bool access = false;
-    bool echelle1 = false;
-    bool echelle2 = false;
-    int echellel = 0;
+    bool correct; // correction d'angle des liaisons
+    bool mark ; // ajout d'intersections
+    bool access ;
+    bool echelle1 ;
+    bool echelle2 ;
+    int echellel ;
     QGraphicsLineItem *lastLine = NULL;
     QGraphicsEllipseItem *lastMark = NULL;
 private:

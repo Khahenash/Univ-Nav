@@ -4,8 +4,10 @@
 
 class ToolView : public QWidget
 {
+
+    Q_OBJECT
 public:
-    ToolView();
+    ToolView(QWidget * parent = 0 );
     QCheckBox *correct_xy;
 };
 

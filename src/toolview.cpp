@@ -1,6 +1,7 @@
 #include "toolview.h"
 
-ToolView::ToolView(){
+ToolView::ToolView(QWidget * parent){
+    this->setParent(parent);
     QVBoxLayout *layout = new QVBoxLayout(this);
 
 
