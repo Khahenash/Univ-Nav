@@ -2,5 +2,10 @@
 
 Batiment::Batiment()
 {
-    //list<Etage> etages;
+    vector<etage> etages;
+    int numero_batiment;
+    string nom_batiment;
+
+
+
 }

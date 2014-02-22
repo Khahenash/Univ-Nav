@@ -13,16 +13,18 @@ ToolView::ToolView(QWidget * parent){
     QHBoxLayout *bh11 = new QHBoxLayout(this);
     QHBoxLayout *bh12 = new QHBoxLayout(this);
 
-    QPushButton *button_echelle = new QPushButton("Definir");
+    button_echelle = new QPushButton("Definir");
     QLineEdit *line_echelle_val = new QLineEdit("");
     QLabel *label_metre = new QLabel("metres");
+    QPushButton *button_set_echelle = new QPushButton("OK");
 
     bh12->addWidget(button_echelle);
     bh12->addWidget(line_echelle_val);
     bh12->addWidget(label_metre);
+    bh12->addWidget(button_set_echelle);
     bv1->addLayout(bh11);
-    bv1->addLayout(bh12);
     bv1->addWidget(new QLabel("Aide : Cliquez sur 'Definir' pour commencer.\n  Sur la carte, cliquez a gauche puis a droite de\n  l'echelle du plan puis saisissez la valeur en metres."));
+    bv1->addLayout(bh12);
 
     groupBox->setLayout(bv1);
 
@@ -36,12 +38,16 @@ ToolView::ToolView(QWidget * parent){
 
     QVBoxLayout *bv2 = new QVBoxLayout(this);
     QHBoxLayout *bh21 = new QHBoxLayout(this);
+    QHBoxLayout *bh215 = new QHBoxLayout(this);
     QHBoxLayout *bh22 = new QHBoxLayout(this);
 
-    QPushButton *button_escalier = new QPushButton("Escalier");
-    QPushButton *button_ascenseur = new QPushButton("Ascenseur");
-    QPushButton *button_porte = new QPushButton("Porte");
-    QPushButton *button_qr_code = new QPushButton("QR Code");
+    QLineEdit *line_code_acces = new QLineEdit("Code de l'acces");
+    bh215->addWidget(new QLabel("Nouvel Acces : "));
+    bh215->addWidget(line_code_acces);
+    button_escalier = new QPushButton("Escalier");
+    button_ascenseur = new QPushButton("Ascenseur");
+    button_porte = new QPushButton("Porte");
+    button_qr_code = new QPushButton("QR Code");
     bh22->addWidget(button_escalier);
     bh22->addWidget(button_ascenseur);
     bh22->addWidget(button_porte);
@@ -53,8 +59,9 @@ ToolView::ToolView(QWidget * parent){
     bh21->addWidget(combo_acces);
 
     bv2->addWidget(new QLabel("\nAcces Existant : "));
+
     bv2->addLayout(bh21);
-    bv2->addWidget(new QLabel("Nouvel Acces : "));
+    bv2->addLayout(bh215);
     bv2->addLayout(bh22);
     groupBox2->setLayout(bv2);
 
@@ -68,7 +75,7 @@ ToolView::ToolView(QWidget * parent){
     QHBoxLayout *bh31 = new QHBoxLayout(this);
     QHBoxLayout *bh32 = new QHBoxLayout(this);
 
-    bv3->addWidget(new QLabel("Aide : Cliquez sur l'un des acces present sur\n  la carte pour commencer. Relier les acces\n  afin de definir l'ensemble des couloirs.\n  Dans le cas d'un virage, faites un clic gauche\n  pour changer de direction.  "));
+    bv3->addWidget(new QLabel("Aide : Cliquez sur l'un des acces present sur\n  la carte pour commencer. Relier les acces\n  afin de definir l'ensemble des couloirs.\n  Dans le cas d'un virage, faites un clic gauche\n  pour changer de direction.\n  [Echap] = Arreter"));
 
     groupBox3->setLayout(bv3);
     layout->addWidget(groupBox3);
@@ -116,7 +123,7 @@ ToolView::ToolView(QWidget * parent){
     QHBoxLayout *bh51 = new QHBoxLayout(this);
     QHBoxLayout *bh52 = new QHBoxLayout(this);
 
-    correct_xy = new QCheckBox("Correction de trajectoire");
+    correct_xy = new QCheckBox("Correction de trajectoire [F2]");
     correct_xy->setChecked(true);
     bh51->addWidget(correct_xy);
     bv5->addLayout(bh51);

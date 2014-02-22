@@ -22,7 +22,10 @@ SOURCES += main.cpp\
     etage.cpp \
     salle.cpp \
     portesalle.cpp \
-    acces.cpp
+    acces.cpp \
+    firstwindow.cpp \
+    batimentwindow.cpp \
+    etagewindow.cpp
 
 HEADERS  += mainwindow.h \
     mapview.h \
@@ -33,7 +36,18 @@ HEADERS  += mainwindow.h \
     etage.h \
     salle.h \
     portesalle.h \
-    acces.h
+    acces.h \
+    firstwindow.h \
+    batimentwindow.h \
+    etagewindow.h
 
 FORMS    += \
-    ../mainwindow.ui
+    ../mainwindow.ui \
+    firstwindow.ui \
+    batimentwindow.ui \
+    etagewindow.ui
+
+RESOURCES += \
+    ressource.qrc
+
+OTHER_FILES +=

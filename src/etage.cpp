@@ -2,5 +2,6 @@
 
 etage::etage()
 {
-    //list<salle> salles;
+    vector<salle> salles;
+    int niveau_etage;
 }

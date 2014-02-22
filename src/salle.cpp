@@ -2,5 +2,7 @@
 
 salle::salle()
 {
-   // list<porteSalle> portes;
+    vector<porteSalle> portes;
+    string nom_salle;
+    int code_salle;
 }

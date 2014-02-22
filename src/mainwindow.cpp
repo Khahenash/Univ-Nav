@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QSplitter *splitter = new QSplitter(this);
 
     QGraphicsScene *scene = new QGraphicsScene(this);
-    QGraphicsPixmapItem *mapItem = new QGraphicsPixmapItem(0,scene);
+    QGraphicsPixmapItem *mapItem = new QGraphicsPixmapItem(0, scene);
     QPixmap mapImage;
     mapImage.load("plan.jpg");
     mapItem->setPixmap(mapImage);
@@ -41,6 +41,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
    connect(tv->correct_xy,SIGNAL(clicked()), view,SLOT(correctmode()));
+   connect(tv->button_echelle,SIGNAL(clicked()), view,SLOT(echellemode()));
+
+   connect(tv->button_ascenseur,SIGNAL(clicked()), view,SLOT(accessmode()));
+   connect(tv->button_escalier,SIGNAL(clicked()), view,SLOT(accessmode()));
+   connect(tv->button_porte,SIGNAL(clicked()), view,SLOT(accessmode()));
+   connect(tv->button_qr_code,SIGNAL(clicked()), view,SLOT(accessmode()));
 
     centralLayout->addWidget(splitter, 0, 0, 1, -1);
 
@@ -52,4 +58,5 @@ MainWindow::~MainWindow()
 {
 
 }
+
 

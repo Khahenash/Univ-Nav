@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/img">
+        <file>univnav.jpg</file>
+    </qresource>
+</RCC>
